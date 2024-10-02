@@ -1,8 +1,8 @@
 require("dotenv").config();
-const config = require("./config.json");
+// const config = require("./config.json");
 const mongoose = require("mongoose");
 
-mongoose.connect(config.connectionString);
+// mongoose.connect(config.connectionString);
 
 const User = require("./models/user.model");
 const Note = require("./models/note.model");
@@ -15,6 +15,18 @@ const app = express();
 
 const jwt = require("jsonwebtoken");
 const { authenticateToken } = require("./utilities");
+
+const config = {
+  connectionString: process.env.MONGODB_URI, // Use your environment variable here
+};
+
+mongoose
+  .connect(config.connectionString, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("MongoDB connected"))
+  .catch((err) => console.error("MongoDB connection error:", err));
 
 app.use(express.json());
 
