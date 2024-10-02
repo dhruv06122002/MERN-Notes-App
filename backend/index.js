@@ -20,10 +20,20 @@ const config = {
   connectionString: process.env.MONGODB_URI, // Use your environment variable here
 };
 
+//mongoose
+ // .connect(config.connectionString, {useNewUrlParser: true, useUnifiedTopology: true})
+//  .then(() => console.log("MongoDB connected"))
+//   .catch((err) => console.error("MongoDB connection error:", err));
+
 mongoose
-  .connect(config.connectionString, {useNewUrlParser: true, useUnifiedTopology: true})
-  .then(() => console.log("MongoDB connected"))
-  .catch((err) => console.error("MongoDB connection error:", err));
+  .connect(config.connectionString, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log("MongoDB connected successfully at:", config.connectionString);
+  })
+  .catch((err) => {
+    console.error("MongoDB connection error:", err.message);
+  });
+
 
 app.use(express.json());
 
