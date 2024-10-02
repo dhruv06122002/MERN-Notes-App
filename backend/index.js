@@ -7,6 +7,8 @@ mongoose.connect(config.connectionString);
 const User = require("./models/user.model");
 const Note = require("./models/note.model");
 
+const path = require("path");
+
 const express = require("express");
 const cors = require("cors");
 const app = express();
@@ -322,6 +324,18 @@ app.get("/search-notes/", authenticateToken, async (req, res) => {
       .status(500)
       .json({ error: true, message: "Internal Server Error" });
   }
+});
+
+app.get("/", (req, res) => {
+  // Serve static files from the dist directory
+  app.use(
+    express.static(path.resolve(__dirname, "frontend", "notes-app", "dist"))
+  );
+
+  // Send the index.html file when the root route is accessed
+  res.sendFile(
+    path.resolve(__dirname, "frontend", "notes-app", "dist", "index.html")
+  );
 });
 
 app.listen(8000);
