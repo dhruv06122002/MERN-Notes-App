@@ -21,10 +21,7 @@ const config = {
 };
 
 mongoose
-  .connect(config.connectionString, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(config.connectionString, {})
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
@@ -41,7 +38,7 @@ app.use(
 //   res.redirect("/login");
 // });
 
-app.post("/", (req, res) => {
+app.get("/", (req, res) => {
   // res.json({ data: "hello" });
   res.redirect("/login");
 });
@@ -358,7 +355,7 @@ app.get("*", (req, res) => {
   );
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = 8001;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
