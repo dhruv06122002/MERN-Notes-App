@@ -326,18 +326,24 @@ app.get("/search-notes/", authenticateToken, async (req, res) => {
   }
 });
 
+app.use(
+  express.static(path.resolve(__dirname, "frontend", "notes-app", "dist"))
+);
 app.get("/", (req, res) => {
-  // Serve static files from the dist directory
-  app.use(
-    express.static(path.resolve(__dirname, "frontend", "notes-app", "dist"))
+  res.sendFile(
+    path.resolve(__dirname, "frontend", "notes-app", "dist", "index.html")
   );
-
-  // Send the index.html file when the root route is accessed
+});
+app.get("*", (req, res) => {
   res.sendFile(
     path.resolve(__dirname, "frontend", "notes-app", "dist", "index.html")
   );
 });
 
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
 app.listen(8000);
 
 module.exports = app;
