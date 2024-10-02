@@ -36,7 +36,12 @@ app.use(
   })
 );
 
-app.get("/", (req, res) => {
+// app.get("/", (req, res) => {
+//   // res.json({ data: "hello" });
+//   res.redirect("/login");
+// });
+
+app.post("/", (req, res) => {
   // res.json({ data: "hello" });
   res.redirect("/login");
 });
