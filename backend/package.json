@@ -2,16 +2,15 @@
   "name": "notes-app-backend",
   "version": "1.0.0",
   "main": "index.js",
+  "description": "",
+  "author": "",
+  "license": "ISC",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    
     "build": "cd frontend/notes-app && npm install && npm run build",
     "dev": "nodemon index.js",
     "start": "node index.js"
   },
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
