@@ -18,6 +18,10 @@
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.26.2"
   },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build"
+}
   "devDependencies": {
     "@eslint/js": "^9.9.0",
     "@types/react": "^18.3.3",
