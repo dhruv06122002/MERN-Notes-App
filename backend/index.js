@@ -26,7 +26,7 @@ app.use(
 
 app.get("/", (req, res) => {
   // res.json({ data: "hello" });
-  res.redirect("/create-account");
+  res.redirect("/login");
 });
 
 //create Account
