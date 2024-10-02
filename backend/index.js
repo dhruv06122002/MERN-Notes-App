@@ -27,16 +27,19 @@ mongoose
 
 app.use(express.json());
 
+// app.use(
+//   cors({
+//     origin: "*",
+//   })
+// );
+
 app.use(
   cors({
-    origin: "*",
+    origin: [process.env.FRONTEND_URL],
+    methods: ["POST"],
+    credentials: true,
   })
 );
-
-// app.get("/", (req, res) => {
-//   // res.json({ data: "hello" });
-//   res.redirect("/login");
-// });
 
 app.get("/", (req, res) => {
   // res.json({ data: "hello" });
