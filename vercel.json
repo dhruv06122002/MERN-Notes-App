@@ -9,7 +9,7 @@
         "src": "backend/frontend/notes-app/package.json",
         "use": "@vercel/static-build",
         "config": {
-          "distDir": "backend/frontend/notes-app/dist"
+          "distDir": "backend/frontend/notes-app/dist" 
         }
       }
     ],
@@ -20,7 +20,7 @@
       },
       {
         "src": "/(.*)",
-        "dest": "backend/frontend/notes-app/dist/$1"
+        "dest": "backend/frontend/notes-app/dist/$1" 
       }
     ]
   }
