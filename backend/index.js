@@ -1,13 +1,11 @@
 require("dotenv").config();
-// const config = require("./config.json");
+const config = require("./config.json");
 const mongoose = require("mongoose");
 
-// mongoose.connect(config.connectionString);
+mongoose.connect(config.connectionString);
 
 const User = require("./models/user.model");
 const Note = require("./models/note.model");
-
-const path = require("path");
 
 const express = require("express");
 const cors = require("cors");
@@ -16,44 +14,16 @@ const app = express();
 const jwt = require("jsonwebtoken");
 const { authenticateToken } = require("./utilities");
 
-const config = {
-  connectionString: process.env.MONGODB_URI, // Use your environment variable here
-};
-
-//mongoose
- // .connect(config.connectionString, {useNewUrlParser: true, useUnifiedTopology: true})
-//  .then(() => console.log("MongoDB connected"))
-//   .catch((err) => console.error("MongoDB connection error:", err));
-
-mongoose
-  .connect(config.connectionString, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => {
-    console.log("MongoDB connected successfully at:", config.connectionString);
-  })
-  .catch((err) => {
-    console.error("MongoDB connection error:", err.message);
-  });
-
-
 app.use(express.json());
 
- app.use(
-   cors({
-      origin: "*",
-   })
- );
-
-//app.use(
-//   cors({
- //   origin: [process.env.FRONTEND_URL],
-//    methods: ["GET", "POST", "PUT", "DELETE"],
-//    credentials: true,
- // })
-//);
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
 app.get("/", (req, res) => {
-  // res.json({ data: "hello" });
-  res.redirect("/login");
+  res.json({ data: "hello" });
 });
 
 //create Account
@@ -354,24 +324,6 @@ app.get("/search-notes/", authenticateToken, async (req, res) => {
   }
 });
 
-app.use(
-  express.static(path.resolve(__dirname, "frontend", "notes-app", "dist"))
-);
-app.get("/", (req, res) => {
-  res.sendFile(
-    path.resolve(__dirname, "frontend", "notes-app", "dist", "index.html")
-  );
-});
-app.get("*", (req, res) => {
-  res.sendFile(
-    path.resolve(__dirname, "frontend", "notes-app", "dist", "index.html")
-  );
-});
-
-const PORT = 8001;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
 app.listen(8000);
 
 module.exports = app;
