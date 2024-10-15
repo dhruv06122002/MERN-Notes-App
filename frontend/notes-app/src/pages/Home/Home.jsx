@@ -146,6 +146,83 @@ const Home = () => {
     return () => {};
   }, []);
 
+  //   return (
+  //     <>
+  //       <Navbar
+  //         userInfo={userInfo}
+  //         onSearchNote={onSearchNote}
+  //         handleClearSearch={handleClearSearch}
+  //       />
+  //       <div className="container mx-auto">
+  //         {allNotes.length > 0 ? (
+  //           <div className="grid grid-cols-3 gap-4 mt-8">
+  //             {allNotes.map((item, index) => (
+  //               <NoteCard
+  //                 key={item._id}
+  //                 title={item.title}
+  //                 date={item.createdOn}
+  //                 content={item.content}
+  //                 tags={item.tags}
+  //                 isPinned={item.isPinned}
+  //                 onEdit={() => handleEdit(item)}
+  //                 onDelete={() => deleteNote(item)}
+  //                 onPinNote={() => updateIsPinned(item)}
+  //               />
+  //             ))}
+  //           </div>
+  //         ) : (
+  //           <EmptyCard
+  //             imgSrc={isSearch ? noDataImage : noteImage}
+  //             message={
+  //               isSearch
+  //                 ? `Oops! No notes found matching your search.`
+  //                 : `Start creating your first note! Click the 'Add' button to note down your thoughts, ideas , and reminder. Let's get started!`
+  //             }
+  //           />
+  //         )}
+  //       </div>
+
+  //       <button
+  //         className="w-16 h-16 flex items-center justify-center rounded-2xl bg-primary hover:bg-blue-600 absolute right-10 bottom-10"
+  //         onClick={() => {
+  //           setOpenAddEditModal({ isShow: true, type: "add", data: null });
+  //         }}
+  //       >
+  //         <MdAdd className="text-[32px] text-white" />
+  //       </button>
+
+  //       <Modal
+  //         isOpen={openAddEditModal.isShow}
+  //         onRequestClose={() => {}}
+  //         style={{
+  //           overlay: {
+  //             backgroundColor: "rgba(0,0,0,0.2)",
+  //           },
+  //         }}
+  //         contentLabel=""
+  //         className="w-[40%] max-h-3/4 bg-white rounded-md mx-auto mt-14 p-5 overflow-scroll"
+  //       >
+  //         <AddEditNotes
+  //           type={openAddEditModal.type}
+  //           noteData={openAddEditModal.data}
+  //           onClose={() => {
+  //             setOpenAddEditModal({ isShow: false, type: "add", data: null });
+  //           }}
+  //           getAllNotes={getAllNotes}
+  //           showToastMessage={showToastMessage}
+  //         />
+  //       </Modal>
+
+  //       <Toast
+  //         isShow={showToastMsg.isShow}
+  //         message={showToastMsg.message}
+  //         type={showToastMsg.type}
+  //         onClose={handleCloseToast}
+  //       />
+  //     </>
+  //   );
+  // };
+
   return (
     <>
       <Navbar
@@ -176,19 +253,19 @@ const Home = () => {
             message={
               isSearch
                 ? `Oops! No notes found matching your search.`
-                : `Start creating your first note! Click the 'Add' button to note down your thoughts, ideas , and reminder. Let's get started!`
+                : `Start creating your first note! Click the 'Add' button to note down your thoughts, ideas, and reminders. Let's get started!`
             }
           />
         )}
       </div>
 
       <button
-        className="w-16 h-16 flex items-center justify-center rounded-2xl bg-primary hover:bg-blue-600 absolute right-10 bottom-10"
+        className="w-16 h-16 flex items-center justify-center rounded-2xl bg-yellow-500 hover:bg-yellow-600 absolute right-10 bottom-10"
         onClick={() => {
           setOpenAddEditModal({ isShow: true, type: "add", data: null });
         }}
       >
-        <MdAdd className="text-[32px] text-white" />
+        <MdAdd className="text-[32px] text-gray-800" />
       </button>
 
       <Modal
@@ -200,7 +277,7 @@ const Home = () => {
           },
         }}
         contentLabel=""
-        className="w-[40%] max-h-3/4 bg-white rounded-md mx-auto mt-14 p-5 overflow-scroll"
+        className="w-[40%] max-h-3/4 bg-yellow-50 rounded-md mx-auto mt-14 p-5 overflow-scroll"
       >
         <AddEditNotes
           type={openAddEditModal.type}

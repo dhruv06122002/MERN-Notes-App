@@ -7,24 +7,47 @@ const PasswordInput = ({ value, onChange, placeholder }) => {
   };
 
   return (
-    <div className="flex items-center bg-transparent border-[1.5px] px-5 rounded mb-3">
+    // <div className="flex items-center bg-transparent border-[1.5px] px-5 rounded mb-3">
+    //   <input
+    //     value={value}
+    //     onChange={onChange}
+    //     type={isShowPassword ? "text" : "password"}
+    //     placeholder={placeholder || "password"}
+    //     className="w-full text-sm bg-transparent py-3 mr-3 rounded outline-none "
+    //   />
+    //   {isShowPassword ? (
+    //     <FaRegEye
+    //       size={22}
+    //       className="text-primary cursor-pointer"
+    //       onClick={() => toggleShowPassword()}
+    //     />
+    //   ) : (
+    //     <FaRegEyeSlash
+    //       size={22}
+    //       className="text-slate-400 cursor-pointer"
+    //       onClick={() => toggleShowPassword()}
+    //     />
+    //   )}
+    // </div>
+
+    <div className="flex items-center bg-transparent border-[#F2C94C] border-[1.5px] px-5 rounded mb-3 shadow-sm">
       <input
         value={value}
         onChange={onChange}
         type={isShowPassword ? "text" : "password"}
-        placeholder={placeholder || "password"}
-        className="w-full text-sm bg-transparent py-3 mr-3 rounded outline-none "
+        placeholder={placeholder || "Password"}
+        className="w-full text-sm bg-transparent py-3 mr-3 rounded outline-none text-[#5C5A5A] placeholder:text-[#AFAFAF]"
       />
       {isShowPassword ? (
         <FaRegEye
           size={22}
-          className="text-primary cursor-pointer"
+          className="text-[#F2C94C] cursor-pointer hover:text-[#C9A826] transition duration-200"
           onClick={() => toggleShowPassword()}
         />
       ) : (
         <FaRegEyeSlash
           size={22}
-          className="text-slate-400 cursor-pointer"
+          className="text-slate-400 cursor-pointer hover:text-[#C9A826] transition duration-200"
           onClick={() => toggleShowPassword()}
         />
       )}

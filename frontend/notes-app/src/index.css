@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -28,5 +28,44 @@
 
   .input-label {
     @apply text-xs text-slate-400;
+  }
+} */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: "Poppins", "sans-serif";
+  }
+  body {
+    background-color: #fff9e3; /* Light yellow background */
+    overflow-x: hidden;
+    color: #5a5a5a; /* Soft gray text for better readability */
+  }
+}
+
+@layer components {
+  .input-box {
+    @apply w-full text-sm bg-transparent border-[1.5px] border-yellow-300 px-5 py-3 rounded mb-4 outline-none text-gray-700;
+    /* Updated border to light yellow */
+  }
+
+  .btn-primary {
+    @apply w-full text-sm bg-yellow-500 text-gray-800 p-2 rounded my-1 hover:bg-yellow-600;
+    /* Cozy yellow button with dark text */
+  }
+
+  .icon-btn {
+    @apply text-xl text-gray-500 cursor-pointer hover:text-yellow-500;
+    /* Updated icon color to a subtle gray, with hover yellow */
+  }
+
+  .input-label {
+    @apply text-xs text-gray-500;
+    /* Softer gray for labels */
   }
 }
