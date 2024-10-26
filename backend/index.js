@@ -2,7 +2,13 @@ require("dotenv").config();
 const config = require("./config.json");
 const mongoose = require("mongoose");
 
-mongoose.connect(config.connectionString);
+mongoose
+  .connect(config.connectionString)
+  .then(() => console.log("MongoDB connected..."))
+  .catch((err) => {
+    console.error("MongoDB connection error:", err.message);
+    process.exit(1);
+  });
 
 const User = require("./models/user.model");
 const Note = require("./models/note.model");
@@ -13,6 +19,8 @@ const app = express();
 
 const jwt = require("jsonwebtoken");
 const { authenticateToken } = require("./utilities");
+
+const port = process.env.PORT || 4000;
 
 app.use(express.json());
 
@@ -324,6 +332,8 @@ app.get("/search-notes/", authenticateToken, async (req, res) => {
   }
 });
 
-app.listen(8000);
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
 
 module.exports = app;
